@@ -1,10 +1,24 @@
 /// <reference path="_reference.ts" />
-var http = require('http');
+var express = require('express');
+var app = express();
 var port = process.env.port || 3000;
-var server = http.createServer(function (req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
+app.get('/', function (req, res) {
+    res.send('Hello Express!');
+});
+app.listen(port, function () {
+    console.log('app Server Started on POrt :' + port);
+});
+/*
+import http = require('http');
+
+var port:number = process.env.port || 3000;
+
+var server: http.Server = http.createServer(
+    function(req:http.ServerRequest, res:http.ServerResponse){
+    res.writeHead(200,{'Content-Type': 'text/plain'});
     res.end("Hello Node!");
 });
-server.listen(port, function () {
-    console.log("Server Started... Listening on Port = " + port);
-});
+
+server.listen(port, function(){
+    console.log("Server Started... Listening on Port = " + port)
+});*/ 
