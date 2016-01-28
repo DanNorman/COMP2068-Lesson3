@@ -3,8 +3,12 @@ import express = require('express');
 var app:express.Express = express();
 var port: number = process.env.port || 3000;
 
-app.get('/', function (req:express.Request, res:express.Response) {
-  res.send('Hello Express!');
+app.get('/', function (req:express.Request, res:express.Response, next:any) {
+  res.sendFile('Public/index.html')
+});
+
+app.get('/info', function(req:express.Request, res:express.Response){
+    res.send('Your Custom Info Page goes here')
 });
 
 app.listen(port, function () {
